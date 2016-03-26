@@ -1,16 +1,58 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-    body {
-      color: purple;
-      background-color: orange;
-    }
-    </style>
-  </head>
-  <body>
-      <h1>Welcome to my page</h1>
-      <p>This is a paragraph.</p>
-  </body>
+<head>
+  <meta charset='utf-8'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <title>Runsheet Generator</title>
+</head>
+
+<body>
+  <h1>Runsheet Generator</h1>
+  <form class="inputForm" method="post" action="/ideas">
+    <input class="timeInput" type="text" name="time" value="start time">
+    <input class="titleInput" type="text" name="title" value="title">
+    <input class="subtitleInput" type="text" name="subtitle" value="subtitle">
+    <input class="detailsInput" type="text" name="details" value="details">
+    <input type="submit" value="Submit">
+  </form>
+  <div class="idea-box">
+  </div>
+  <script>
+
+  var displayItem = function(item) {
+    var itemString = '<p>';
+    itemString += '<b>' + item.time + ' </b>' + item.title;
+    itemString += '<br>' + item.subtitle;
+    itemString += '<br>' + item.details;
+    itemString += '</p>';
+    var itemElement = $(itemString);
+    $(".idea-box").append(itemElement);
+  }
+
+  var createFeed = function(item) {
+    $(".idea-box").empty();
+    item.forEach(displayItem);
+  }
+
+  var updateFeed = function() {
+    $.get("/ideas", createFeed);
+  }
+
+  updateFeed();
+
+  var submitItem = function (e) {
+    e.preventDefault();
+    var item = {};
+    item.time = $(".timeInput").val();
+    item.title = $(".titleInput").val();
+    item.subtitle = $(".subtitleInput").val();
+    item.details = $(".detailsInput").val();
+    $.post( "/ideas", item, updateFeed);
+  }
+
+  $(".inputForm").on("submit",submitItem);
+
+  </script>
+</body>
 </html>

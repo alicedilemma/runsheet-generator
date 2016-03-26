@@ -11,20 +11,31 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//make an empty list of ideas
-var coolIdeas = [];
-coolIdeas.push("A family who are all secretly superheroes but haven't told each other");
+//make an empty list of runsheet items
+var runsheetItems = [];
+var item = {};
+item.time = "9:00";
+item.title = "Labout Leader Andrew Little";
+item.subtitle = "0270000000";
+item.details = "Today we are discussing immigration and housing";
+runsheetItems.push(item);
 
 //let a client GET the list of ideas
 var sendIdeasList = function (request, response) {
-  response.send(coolIdeas);
+  response.send(runsheetItems);
 }
 app.get('/ideas', sendIdeasList);
 
 //let a client POST new ideas
 var saveNewIdea = function (request, response) {
-  console.log(request.body.idea); //write it on the command prompt so we can see
-  coolIdeas.push(request.body.idea); //save it in our list
+  console.log(request.body); //write it on the command prompt so we can see
+  var submittedItem = request.body;
+  var item = {};
+  item.time = submittedItem.time;
+  item.title = submittedItem.title;
+  item.subtitle = submittedItem.subtitle;
+  item.details = submittedItem.details;
+  runsheetItems.push(item); //save it in our list
   response.send("thanks for your idea. Press back to add another");
 }
 app.post('/ideas', saveNewIdea);
