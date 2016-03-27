@@ -14,11 +14,6 @@ app.use(bodyParser.json())
 //make an empty list of runsheet items
 var runsheetItems = [];
 var item = {};
-item.time = "9:00";
-item.title = "Labout Leader Andrew Little";
-item.subtitle = "0270000000";
-item.details = "Today we are discussing immigration and housing";
-runsheetItems.push(item);
 
 //let a client GET the list of ideas
 var sendIdeasList = function (request, response) {

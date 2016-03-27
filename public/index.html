@@ -9,18 +9,24 @@
 
 <body>
   <div class="noPrint">
-  <h1>Runsheet Generator</h1>
-  <form class="inputForm" method="post" action="/ideas">
-    <input class="timeInput" type="text" name="time" value="start time eg 7.15">
-    <input class="titleInput" type="text" name="title" value="title">
-    <input class="subtitleInput" type="text" name="subtitle" value="subtitle">
-    <input class="detailsInput" type="text" name="details" value="details">
-    <input type="submit" value="Submit">
-    <a class= "genBreakfast" href="#">Generate Breakfast</a>
-  </form>
-</div>
+    <h1>Runsheet Generator</h1>
+    <form class="inputForm" method="post" action="/ideas">
+      <input class="timeInput" type="text" name="time" value="start time eg 7.15">
+      <input class="titleInput" type="text" name="title" value="title">
+      <input class="subtitleInput" type="text" name="subtitle" value="subtitle">
+      <input class="detailsInput" type="text" name="details" value="details">
+      <input type="submit" value="Submit">
+      <a class= "genBreakfast" href="#">Generate Breakfast</a>
+    </form>
+  </div>
+  <p class="heading">Schedule</p>
+  <div class="title">
+  </div>
   <div class="idea-box">
   </div>
+  <p class="heading">Giveaways</p>
+  <p class="heading">Outro</p>
+  <p class="heading">Coming up tomorrow...</p>
   <script>
 
   var timeSort = function(item1, item2) {
@@ -35,15 +41,15 @@
     return time1.localeCompare(time2);
   }
 
-
-
-
   var displayItem = function(item) {
     var itemString = '<p>';
-    itemString += '<b>' + item.time + ': </b>' + item.title;
-    itemString += '<br>' + item.subtitle;
-    itemString += '<br>' + item.details;
-    itemString += '</p>';
+    itemString += item.time + ': ' + item.title + '</p>';
+    if(item.subtitle !== ""){
+      itemString += '<p><div class="subtitle">' + item.subtitle + '</div></p>';
+    }
+    if(item.details !== ""){
+      itemString += '<p>' + item.details + '</p>';
+    }
     var itemElement = $(itemString);
     $(".idea-box").append(itemElement);
   }
@@ -72,8 +78,10 @@
 
   $(".inputForm").on("submit",submitItem);
 
-//Breakfast template generation
+  //Breakfast template generation
   var genBreakfast = function() {
+    //Title
+    $(".title").append("<h1>Breakfast" + "</h1>");
     //News!
     var genNews = function(time, title, subtitle) {
       var item = {};

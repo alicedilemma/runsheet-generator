@@ -1,9 +1,18 @@
+body {
+  font-family: Calibri, Arial, sans-serif;
+}
+p {
+  line-height: 5px;
+}
+br {
+  display:block;
+  line-height: 10px;
+}
 .idea-box {
   padding: 10px;
 }
 
 h1 {
-  text-align: center;
 }
 
 h2 {
@@ -13,8 +22,13 @@ h2 {
   border-radius: 5px;
   text-align: center;
 }
-
-
+.subtitle {
+  font-size: 85%;
+}
+.heading {
+  padding-left: 10px;
+  font-weight: bold;
+}
 
 @media print {
 .noPrint {
