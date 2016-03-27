@@ -10,7 +10,7 @@
 <body>
   <h1>Runsheet Generator</h1>
   <form class="inputForm" method="post" action="/ideas">
-    <input class="timeInput" type="text" name="time" value="start time">
+    <input class="timeInput" type="text" name="time" value="start time eg 7.15">
     <input class="titleInput" type="text" name="title" value="title">
     <input class="subtitleInput" type="text" name="subtitle" value="subtitle">
     <input class="detailsInput" type="text" name="details" value="details">
@@ -38,7 +38,7 @@
 
   var displayItem = function(item) {
     var itemString = '<p>';
-    itemString += '<b>' + item.time + ' </b>' + item.title;
+    itemString += '<b>' + item.time + ': </b>' + item.title;
     itemString += '<br>' + item.subtitle;
     itemString += '<br>' + item.details;
     itemString += '</p>';
@@ -72,23 +72,40 @@
 
 //Breakfast template generation
   var genBreakfast = function() {
-    var genNews = function(time) {
+    //News!
+    var genNews = function(time, title, subtitle) {
       var item = {};
+      //time
       item.time = time;
-      item.title = "News";
+      //title
+      if (title === undefined) {
+        item.title = "News";
+      } else {
+        item.title = title;
+      }
+      //subtitle
+      item.subtitle = subtitle;
+      //post and update
       $.post( "/ideas", item, updateFeed);
     }
-    genNews("7:00");
+    genNews("7:00","News, Surf Report with Michael Molloy!","021 860 104");
     genNews("8:00");
     genNews("9:00");
-    var genHeadlines = function(time) {
+    //Headlines!
+    var genHeadlines = function(time, title) {
       var item = {};
+      //time
       item.time = time;
-      item.title = "Headlines";
+      //title
+      if (title === undefined) {
+        item.title = "Headlines";
+      } else {
+        item.title = title;
+      }
       $.post( "/ideas", item, updateFeed);
     }
     genHeadlines("6:30");
-    genHeadlines("7:30");
+    genHeadlines("7:30", "Headlines, Ads, Rick Breeze Weather");
     genHeadlines("8:30");
   }
 

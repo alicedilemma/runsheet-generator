@@ -31,10 +31,10 @@ var saveNewIdea = function (request, response) {
   console.log(request.body); //write it on the command prompt so we can see
   var submittedItem = request.body;
   var item = {};
-  item.time = submittedItem.time;
-  item.title = submittedItem.title;
-  item.subtitle = submittedItem.subtitle;
-  item.details = submittedItem.details;
+  item.time = submittedItem.time || "";
+  item.title = submittedItem.title || "";
+  item.subtitle = submittedItem.subtitle || "";
+  item.details = submittedItem.details || "";
   runsheetItems.push(item); //save it in our list
   response.send("thanks for your idea. Press back to add another");
 }
