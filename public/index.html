@@ -21,6 +21,21 @@
   </div>
   <script>
 
+  var timeSort = function(item1, item2) {
+    var time1 = item1.time;
+    if(time1.length < 5) {
+      time1 = "0" + time1;
+    }
+    var time2 = item2.time;
+    if(time2.length < 5) {
+      time2 = "0" + time2;
+    }
+    return time1.localeCompare(time2);
+  }
+
+
+
+
   var displayItem = function(item) {
     var itemString = '<p>';
     itemString += '<b>' + item.time + ' </b>' + item.title;
@@ -31,9 +46,10 @@
     $(".idea-box").append(itemElement);
   }
 
-  var createFeed = function(item) {
+  var createFeed = function(runsheetList) {
     $(".idea-box").empty();
-    item.forEach(displayItem);
+    runsheetList.sort(timeSort);
+    runsheetList.forEach(displayItem);
   }
 
   var updateFeed = function() {
