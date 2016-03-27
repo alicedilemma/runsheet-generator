@@ -1,7 +1,5 @@
 .idea-box {
-  background-color: #FFF0A5;
-  padding: 20px;
-  border: 2px solid;
+  padding: 10px;
 }
 
 h1 {
@@ -14,4 +12,12 @@ h2 {
   border: 2px solid #FFB03B;
   border-radius: 5px;
   text-align: center;
+}
+
+
+
+@media print {
+.noPrint {
+    display:none;
+  }
 }
