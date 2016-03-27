@@ -15,6 +15,7 @@
     <input class="subtitleInput" type="text" name="subtitle" value="subtitle">
     <input class="detailsInput" type="text" name="details" value="details">
     <input type="submit" value="Submit">
+    <a class= "genBreakfast" href="#">Generate Breakfast</a>
   </form>
   <div class="idea-box">
   </div>
@@ -52,6 +53,30 @@
   }
 
   $(".inputForm").on("submit",submitItem);
+
+//Breakfast template generation
+  var genBreakfast = function() {
+    var genNews = function(time) {
+      var item = {};
+      item.time = time;
+      item.title = "News";
+      $.post( "/ideas", item, updateFeed);
+    }
+    genNews("7:00");
+    genNews("8:00");
+    genNews("9:00");
+    var genHeadlines = function(time) {
+      var item = {};
+      item.time = time;
+      item.title = "Headlines";
+      $.post( "/ideas", item, updateFeed);
+    }
+    genHeadlines("6:30");
+    genHeadlines("7:30");
+    genHeadlines("8:30");
+  }
+
+  $('.genBreakfast').on('click',genBreakfast)
 
   </script>
 </body>
