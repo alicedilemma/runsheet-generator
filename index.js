@@ -30,6 +30,7 @@ var saveNewIdea = function (request, response) {
   item.title = submittedItem.title || "";
   item.subtitle = submittedItem.subtitle || "";
   item.details = submittedItem.details || "";
+  item.thanks = submittedItem.thanks || "";
   runsheetItems.push(item); //save it in our list
   response.send("thanks for your idea. Press back to add another");
 }

@@ -15,6 +15,7 @@
       <input class="titleInput" type="text" name="title" value="title">
       <input class="subtitleInput" type="text" name="subtitle" value="subtitle">
       <input class="detailsInput" type="text" name="details" value="details">
+      <input class="thanksInput" type="text" name="thanks" value="thanks">
       <input type="submit" value="Submit">
       <a class= "genBreakfast" href="#">Generate Breakfast</a>
     </form>
@@ -73,6 +74,7 @@
     item.title = $(".titleInput").val();
     item.subtitle = $(".subtitleInput").val();
     item.details = $(".detailsInput").val();
+    item.thanks = $(".thanksInput").val();
     $.post( "/ideas", item, updateFeed);
   }
 
