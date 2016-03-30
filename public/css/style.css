@@ -9,7 +9,7 @@ br {
   line-height: 10px;
 }
 .long-box, .short-box {
-  padding: 10px;
+  padding: 5px;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h2 {
   line-height: 20%;
 }
 .heading {
-  padding-left: 10px;
+  padding-left: 5px;
   font-weight: bold;
 }
 .time {
