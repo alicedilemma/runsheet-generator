@@ -49,7 +49,7 @@
 
   var displayItemLong = function(item) {
     var itemString = '<p>';
-    itemString += item.time + ': ' + item.title + '</p>';
+    itemString += '<b>' + item.time + '</b>: ' + item.title + '</p>';
     if(item.subtitle !== ""){
       itemString += '<p><div class="subtitle">' + item.subtitle + '</div></p>';
     }
@@ -62,7 +62,7 @@
 
   var displayItemShort = function(item) {
     var itemString = '<p>';
-    itemString += item.time + ': ' + item.title + '</p>';
+    itemString += '<b>' + item.time + '</b>: ' + item.title + '</p>';
     if(item.subtitle !== ""){
       itemString += '<p><div class="subtitle">' + item.subtitle + '</div></p>';
     }

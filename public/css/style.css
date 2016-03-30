@@ -24,9 +24,13 @@ h2 {
 }
 .subtitle {
   font-size: 85%;
+  line-height: 20%;
 }
 .heading {
   padding-left: 10px;
+  font-weight: bold;
+}
+.time {
   font-weight: bold;
 }
 
