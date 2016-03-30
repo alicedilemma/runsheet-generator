@@ -23,7 +23,7 @@ app.get('/ideas', sendIdeasList);
 
 //let a client POST new ideas
 var saveNewIdea = function (request, response) {
-  console.log(request.body); //write it on the command prompt so we can see
+  //console.log(request.body); //write it on the command prompt so we can see
   var submittedItem = request.body;
   var item = {};
   item.time = submittedItem.time || "";
